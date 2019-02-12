@@ -1,0 +1,674 @@
+@extends('layouts.app')
+
+@section('content')
+
+<div class="container-fluid container-fh m-grid">
+  <div class="main-container main-container--empty container-fh__content">
+    <div class="container-header">
+      <h2 class="container-heading">Users</h2>
+      <div class="container-header-controls">
+        <div class="input-group input-group-icon icon-right container-header-control m-grid__search">
+          <input class="form-control" type="text" placeholder="Search...">
+          <span class="input-icon ua-icon-search"></span>
+        </div>
+        <div class="dropdown container-header-control">
+          <a class="btn btn-info dropdown-toggle" href="#" data-toggle="dropdown">
+            Action
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+        <a href="#" class="btn btn-info container-header-control">Create user</a>
+      </div>
+    </div>
+    <div class="m-grid__body">
+      <div class="m-grid__body-scrollpane js-scrollable" data-simplebar="init"><div class="simplebar-track vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="top: 2px; height: 42px;"></div></div><div class="simplebar-track horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar"></div></div><div class="simplebar-scroll-content" style="padding-right: 17px; margin-bottom: -34px;"><div class="simplebar-content" style="padding-bottom: 17px; margin-right: -17px;">
+        <div class="m-grid__items">
+          <div class="m-grid__item is-selected">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown" aria-expanded="false"></span>
+              <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 19px, 0px); top: 0px; left: 0px; will-change: transform;">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" checked="">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+          <div class="m-grid__item">
+            <div class="dropdown no-arrow control-dropdown">
+              <span class="dropdown-toggle ua-icon-dots-vertical" data-toggle="dropdown"></span>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label"></label>
+            </div>
+            <div class="d-flex">
+              <img src="img/users/user-5.png" alt="" class="m-grid__item-avatar rounded-circle" width="34" height="34">
+              <div class="m-grid__item-info">
+                <a href="#" class="m-grid__item-name">Lori Fisher</a>
+                <span class="m-grid__item-email">lfisher@example.com</span>
+              </div>
+            </div>
+            <div class="m-grid__item-labels">
+              <span class="m-grid__item-label m-grid__item-label--active">Active 12</span>
+              <span class="m-grid__item-label m-grid__item-label--deactivated">Deactivated 20</span>
+            </div>
+          </div>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="container-footer">
+      <nav>
+        <ul class="pagination container-pagination">
+          <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+
+      <div class="container-goto-page">
+        Go to page: <input type="text" class="form-control container-goto-page__input" value="127"> <span class="container-goto-page__total-amount">for 12345</span>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection

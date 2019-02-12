@@ -1,0 +1,103 @@
+@extends('layouts.app')
+
+
+@section('content')
+
+    <div class="row">
+
+        <div class="col-lg-12 margin-tb">
+
+            <div class="pull-left">
+
+                <h2>Tickets</h2>
+
+            </div>
+
+            <div class="pull-right">
+
+                @can('ticket-create')
+
+                <a class="btn btn-success" href="{{ route('Ticket.create') }}"> Create New Tickets</a>
+
+                @endcan
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    @if ($message = Session::get('success'))
+
+        <div class="alert alert-success">
+
+            <p>{{ $message }}</p>
+
+        </div>
+
+    @endif
+
+
+    <table class="table table-bordered">
+
+        <tr>
+
+            <th>No</th>
+
+            <th>Name</th>
+
+            <th>Details</th>
+
+            <th width="280px">Action</th>
+
+        </tr>
+
+	    @foreach ($tickets as $ticket)
+
+	    <tr>
+
+	        <td>{{ ++$i }}</td>
+
+	        <td>{{ $ticket->name }}</td>
+
+	        <td>{{ $ticket->detail }}</td>
+
+	        <td>
+
+                <form action="{{ route('Ticket.destroy',$ticket->id) }}" method="POST">
+
+                    <a class="btn btn-info" href="{{ route('Ticket.show',$ticket->id) }}">Show</a>
+
+                    @can('product-edit')
+
+                    <a class="btn btn-primary" href="{{ route('Ticket.edit',$ticket->id) }}">Edit</a>
+
+                    @endcan
+
+
+                    @csrf
+
+                    @method('DELETE')
+
+                    @can('ticket-delete')
+
+                    <button type="submit" class="btn btn-danger">Delete</button>
+
+                    @endcan
+
+                </form>
+
+	        </td>
+
+	    </tr>
+
+	    @endforeach
+
+    </table>
+
+
+    {!! $tickets->links() !!}
+
+
+@endsection
