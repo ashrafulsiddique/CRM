@@ -4,22 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Expense;
+use App\User;
 use Spatie\Permission\Models\Permission;
 
 class ExpenseController extends Controller
 {
 
 
-	   function __construct()
+       function __construct()
 
     {
-
          $this->middleware('permission:Expense-list');
-
          $this->middleware('permission:Expense-create', ['only' => ['create','store']]);
-
          $this->middleware('permission:Expense-edit', ['only' => ['edit','update']]);
-
          $this->middleware('permission:Expense-delete', ['only' => ['destroy']]);
 
     }
@@ -33,7 +30,6 @@ class ExpenseController extends Controller
         $expenses = Expense::orderBy('id','DESC')->paginate(5);
 
         return view('expenses.index',compact('expenses'))
-
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -44,9 +40,9 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        $permission = Permission::get();
+        $users=User::whereHas('roles', function($q){$q->whereIn('roles.name', ['customer']);})->get();
 
-        return view('expenses.create',compact('permission'));
+        return view('expenses.create',compact('users'));
     }
 
     /**
@@ -57,23 +53,28 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-       $this->validate($request, [
+        $this->validate($request, [
+            'title' => 'required',
+            'amount' => 'required',
+            'expense_date' => 'required',
+            'category' => 'required',
+            'customer' => 'required',
+            'account' => 'required',
+            'description' => 'required',
+    ]);
 
-            'name' => 'required|unique:expenses,name',
-
-            'permission' => 'required',
-
-        ]);
-
-
-        $expense = Expense::create(['name' => $request->input('name')]);
-
-        $expense->syncPermissions($request->input('permission'));
-
+        $expenses = new Expense;
+        $expenses->title = $request->input('title');
+        $expenses->amount = $request->input('amount');
+        $expenses->expense_date = $request->input('expense_date');
+        $expenses->category = $request->input('category');
+        $expenses->customer_id = $request->input('customer');
+        $expenses->account = $request->input('account');
+        $expenses->description = $request->input('description');   
+        $expenses->save();
 
         return redirect()->route('expenses.index')
-
-                        ->with('success','expense created successfully');
+                ->with('success','expense created successfully');
     }
 
     /**
@@ -86,14 +87,7 @@ class ExpenseController extends Controller
     {
        $expense = Expense::find($id);
 
-        $expensePermissions = Permission::join("Expense_has_permissions","Expense_has_permissions.permission_id","=","permissions.id")
-
-            ->where("Expense_has_permissions.order_id",$id)
-
-            ->get();
-
-
-        return view('expenses.show',compact('expense','ExpensePermissions'));
+        return view('expenses.show',compact('expense'));
     }
 
     /**
@@ -105,17 +99,9 @@ class ExpenseController extends Controller
     public function edit($id)
     {
         $expense = Expense::find($id);
+        $users=User::whereHas('roles', function($q){$q->whereIn('roles.name', ['customer']);})->get();
 
-        $permission = Permission::get();
-
-        $expensePermissions = DB::table("Expense_has_permissions")->where("Expense_has_permissions.invoice_id",$id)
-
-            ->pluck('Order_has_permissions.permission_id','Expense_has_permissions.permission_id')
-
-            ->all();
-
-
-        return view('expenses.edit',compact('expense','permission','expensePermissions'));
+        return view('expenses.edit',compact('expense','users'));
     }
 
     /**
@@ -129,25 +115,27 @@ class ExpenseController extends Controller
     {
         $this->validate($request, [
 
-            'name' => 'required',
+            'title' => 'required',
+            'amount' => 'required',
+            'expense_date' => 'required',
+            'category' => 'required',
+            'customer' => 'required',
+            'account' => 'required',
+            'description' => 'required',
 
-            'permission' => 'required',
+    ]);
 
-        ]);
-
-
-        $expense = Expense::find($id);
-
-        $expense->name = $request->input('name');
-
-        $expense->save();
-
-
-        $expense->syncPermissions($request->input('permission'));
-
+    $expenses = Expense::find($id);
+    $expenses->title = $request->input('title');
+    $expenses->amount = $request->input('amount');
+    $expenses->expense_date = $request->input('expense_date');
+    $expenses->category = $request->input('category');
+    $expenses->customer_id = $request->input('customer');
+    $expenses->account = $request->input('account');
+    $expenses->description = $request->input('description');   
+    $expenses->save();
 
         return redirect()->route('expenses.index')
-
                         ->with('success','Expense updated successfully');
     }
 
@@ -159,10 +147,10 @@ class ExpenseController extends Controller
      */
     public function destroy($id)
     {
-       DB::table("expenses")->where('id',$id)->delete();
-
+        $expense = Expense::find($id);
+        $expense->delete();
+        
         return redirect()->route('expenses.index')
-
                         ->with('success','Expense deleted successfully');
     }
 }

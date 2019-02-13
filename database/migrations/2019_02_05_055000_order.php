@@ -13,12 +13,17 @@ class Order extends Migration
      */
     public function up()
     {
-       Schema::create('orders', function (Blueprint $table) {
-
+      Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('name');
+            $table->string('subject');
+            $table->integer('customer_id');
+            $table->date('issue_date');
+            $table->string('assigned');
+            $table->string('status');
+            $table->date('open_till');
+            $table->string('details'); 
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
-
         });
     }
 

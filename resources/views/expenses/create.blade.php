@@ -23,6 +23,7 @@
 
     </div>
 
+<br>
 
     @if ($errors->any())
 
@@ -47,43 +48,70 @@
 
     <form action="{{ route('expenses.store') }}" method="POST">
 
-    	@csrf
+        @csrf
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Title:</strong>
+                    <input type="text" name="title" class="form-control" placeholder="Title">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Amount:</strong>
+                    <input type="number" step="0.01" name="amount" class="form-control" placeholder="0.00">
+                </div>
+            </div>
+
+            
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Date:</strong>
+                    <input type="date" name="expense_date" class="form-control" placeholder="Date">
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">  
+                    <strong>Category:</strong>
+                    <input type="text" name="category" class="form-control" placeholder="Category">
+                </div>
+            </div>
+
+           <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Choose Customer:</strong>
+                    <select name="customer" class="form-control">
+                        <option style="display:none;"></option>
+                        @foreach ($users as $user)
+                            <option value="{{$user->id}}">{{$user->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Account:</strong>
+                    <input type="text" name="account" class="form-control" placeholder="account">
+                </div>
+            </div>
 
 
-         <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Description:</strong>
+                    <textarea rows="4" class="form-control" name="description" placeholder="Details"></textarea>
+                </div>
+            </div>
+       
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
 
-		    <div class="col-xs-12 col-sm-12 col-md-12">
-
-		        <div class="form-group">
-
-		            <strong>Name:</strong>
-
-		            <input type="text" name="name" class="form-control" placeholder="Name">
-
-		        </div>
-
-		    </div>
-
-		    <div class="col-xs-12 col-sm-12 col-md-12">
-
-		        <div class="form-group">
-
-		            <strong>Detail:</strong>
-
-		            <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail"></textarea>
-
-		        </div>
-
-		    </div>
-
-		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-		            <button type="submit" class="btn btn-primary">Submit</button>
-
-		    </div>
-
-		</div>
-
+        </div>
 
     </form>
 

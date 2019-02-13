@@ -4,24 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use App\User;
 use Spatie\Permission\Models\Permission;
 
 class OrderController extends Controller
 {
 
-
-         function __construct()
-
+     function __construct()
     {
-
          $this->middleware('permission:Order-list');
-
          $this->middleware('permission:Order-create', ['only' => ['create','store']]);
-
          $this->middleware('permission:Order-edit', ['only' => ['edit','update']]);
-
          $this->middleware('permission:Order-delete', ['only' => ['destroy']]);
-
     }
     /**
      * Display a listing of the resource.
@@ -33,8 +27,7 @@ class OrderController extends Controller
        $orders = Order::orderBy('id','DESC')->paginate(5);
 
         return view('orders.index',compact('orders'))
-
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+         ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -44,9 +37,11 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $permission = Permission::get();
-
-        return view('orders.create',compact('permission'));
+        // $users= User::all();
+        $users=User::whereHas('roles', function($q){$q->whereIn('roles.name', ['customer']);})->get();
+        $staffs=User::whereHas('roles', function($q){$q->whereIn('roles.name', ['staff']);})->get();
+        
+        return view('orders.create',compact('users', 'staffs'));
     }
 
     /**
@@ -58,21 +53,26 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'subject' => 'required',
+            'customer' => 'required',
+            'issue_date' => 'required',
+            'staff' => 'required',
+            'status' => 'required',
+            'open_till' => 'required',
+            'details' => 'required',
+    ]);
 
-            'name' => 'required|unique:orders,name',
-
-            'permission' => 'required',
-
-        ]);
-
-
-        $order = Order::create(['name' => $request->input('name')]);
-
-        $order->syncPermissions($request->input('permission'));
-
+        $orders = new Order;
+        $orders->subject = $request->input('subject');
+        $orders->customer_id = $request->input('customer');
+        $orders->issue_date = $request->input('issue_date');
+        $orders->staff_id = $request->input('staff');
+        $orders->status = $request->input('status');
+        $orders->open_till = $request->input('open_till');
+        $orders->details = $request->input('details');   
+        $orders->save();
 
         return redirect()->route('orders.index')
-
                         ->with('success','order created successfully');
     }
 
@@ -85,15 +85,8 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = Order::find($id);
-
-        $orderPermissions = Permission::join("Order_has_permissions","Order_has_permissions.permission_id","=","permissions.id")
-
-            ->where("Order_has_permissions.order_id",$id)
-
-            ->get();
-
-
-        return view('orders.show',compact('order','OrderPermissions'));
+        
+        return view('orders.show',compact('order'));
     }
 
     /**
@@ -104,18 +97,11 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $order = Order::find($id);
+        $orders = Order::find($id);
+        $users=User::whereHas('roles', function($q){$q->whereIn('roles.name', ['customer']);})->get();
+        $staffs=User::whereHas('roles', function($q){$q->whereIn('roles.name', ['staff']);})->get();
 
-        $permission = Permission::get();
-
-        $orderPermissions = DB::table("Order_has_permissions")->where("Order_has_permissions.invoice_id",$id)
-
-            ->pluck('Order_has_permissions.permission_id','Order_has_permissions.permission_id')
-
-            ->all();
-
-
-        return view('orders.edit',compact('order','permission','orderPermissions'));
+        return view('orders.edit',compact('orders','users', 'staffs'));
     }
 
     /**
@@ -127,27 +113,27 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $this->validate($request, [
+        $this->validate($request, [
+            'subject' => 'required',
+            'customer' => 'required',
+            'issue_date' => 'required',
+            'staff' => 'required',
+            'status' => 'required',
+            'open_till' => 'required',
+            'details' => 'required',
+    ]);
 
-            'name' => 'required',
-
-            'permission' => 'required',
-
-        ]);
-
-
-        $order = Order::find($id);
-
-        $order->name = $request->input('name');
-
-        $order->save();
-
-
-        $order->syncPermissions($request->input('permission'));
-
+        $orders = Order::find($id);
+        $orders->subject = $request->input('subject');
+        $orders->customer_id = $request->input('customer');
+        $orders->issue_date = $request->input('issue_date');
+        $orders->staff_id = $request->input('staff');
+        $orders->status = $request->input('status');
+        $orders->open_till = $request->input('open_till');
+        $orders->details = $request->input('details');   
+        $orders->save();
 
         return redirect()->route('orders.index')
-
                         ->with('success','Order updated successfully');
     }
 
@@ -159,10 +145,10 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-      DB::table("orders")->where('id',$id)->delete();
+        $orders = Order::find($id);
+        $orders->delete();
 
         return redirect()->route('orders.index')
-
-                        ->with('success','Orders deleted successfully');
+                ->with('success','Orders deleted successfully');
     }
 }

@@ -4,23 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Invoice;
+use App\User;
 use Spatie\Permission\Models\Permission;
 
 class InvoiceController extends Controller
 {
 
-
-
         function __construct()
-
     {
-
          $this->middleware('permission:Invoice-list');
-
          $this->middleware('permission:Invoice-create', ['only' => ['create','store']]);
-
          $this->middleware('permission:Invoice-edit', ['only' => ['edit','update']]);
-
          $this->middleware('permission:Invoice-delete', ['only' => ['destroy']]);
 
     }
@@ -35,7 +29,6 @@ class InvoiceController extends Controller
        $invoices = Invoice::orderBy('id','DESC')->paginate(5);
 
         return view('invoices.index',compact('invoices'))
-
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -46,9 +39,11 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        $permission = Permission::get();
+        // $users= User::all();
+        $users=User::whereHas('roles', function($q){$q->whereIn('roles.name', ['customer']);})->get();
 
-        return view('invoices.create',compact('permission'));
+
+        return view('invoices.create',compact('users'));
     }
 
     /**
@@ -59,22 +54,26 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-          $this->validate($request, [
+        $this->validate($request, [
 
-            'name' => 'required|unique:invoices,name',
+            'customer' => 'required',
+            'ser_no' => 'required',
+            'inv_no' => 'required',
+            'issue_date' => 'required',
+            'due_note' => 'required',
+            'due_date' => 'required',
+    ]);
 
-            'permission' => 'required',
-
-        ]);
-
-
-        $invoice = Invoice::create(['name' => $request->input('name')]);
-
-        $invoice->syncPermissions($request->input('permission'));
-
+    $invoice = new Invoice;
+    $invoice->customer_id = $request->input('customer');
+    $invoice->serial_no = $request->input('ser_no');
+    $invoice->invoice_no = $request->input('inv_no');
+    $invoice->issue_date = $request->input('issue_date');
+    $invoice->due_note = $request->input('due_note');
+    $invoice->due_date = $request->input('due_date');   
+    $invoice->save();
 
         return redirect()->route('invoices.index')
-
                         ->with('success','invoice created successfully');
     }
 
@@ -88,14 +87,7 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::find($id);
 
-        $invoicePermissions = Permission::join("Invoice_has_permissions","Invoice_has_permissions.permission_id","=","permissions.id")
-
-            ->where("Invoice_has_permissions.role_id",$id)
-
-            ->get();
-
-
-        return view('invoices.show',compact('invoice','InvoicePermissions'));
+        return view('invoices.show',compact('invoice'));
     }
 
     /**
@@ -107,17 +99,11 @@ class InvoiceController extends Controller
     public function edit($id)
     {
         $invoice = Invoice::find($id);
-
-        $permission = Permission::get();
-
-        $invoicePermissions = DB::table("Invoice_has_permissions")->where("Invoice_has_permissions.invoice_id",$id)
-
-            ->pluck('Invoice_has_permissions.permission_id','Invoice_has_permissions.permission_id')
-
-            ->all();
+        // $users= User::all();
+        $users=User::whereHas('roles', function($q){$q->whereIn('roles.name', ['customer']);})->get();
 
 
-        return view('invoices.edit',compact('invoice','permission','invoicePermissions'));
+        return view('invoices.edit',compact('invoice', 'users'));
     }
 
     /**
@@ -129,27 +115,25 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $this->validate($request, [
+        $this->validate($request, [
+            'customer' => 'required',
+            'ser_no' => 'required',
+            'inv_no' => 'required',
+            'issue_date' => 'required',
+            'due_note' => 'required',
+            'due_date' => 'required',
+    ]);
 
-            'name' => 'required',
-
-            'permission' => 'required',
-
-        ]);
-
-
-        $invoice = Invoice::find($id);
-
-        $invoice->name = $request->input('name');
-
-        $invoice->save();
-
-
-        $invoice->syncPermissions($request->input('permission'));
-
+    $invoice = Invoice::find($id);
+    $invoice->customer_id = $request->input('customer');
+    $invoice->serial_no = $request->input('ser_no');
+    $invoice->invoice_no = $request->input('inv_no');
+    $invoice->issue_date = $request->input('issue_date');
+    $invoice->due_note = $request->input('due_note');
+    $invoice->due_date = $request->input('due_date');   
+    $invoice->save();
 
         return redirect()->route('invoices.index')
-
                         ->with('success','Invoice updated successfully');
     }
 
@@ -161,10 +145,10 @@ class InvoiceController extends Controller
      */
     public function destroy($id)
     {
-         DB::table("invoices")->where('id',$id)->delete();
+        $invoice = Invoice::find($id);
+        $invoice->delete();
 
         return redirect()->route('invoices.index')
-
                         ->with('success','Invoice deleted successfully');
     }
 }

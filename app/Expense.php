@@ -5,7 +5,7 @@ namespace App;
 
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\User;
 
 class Expense extends Model
 
@@ -21,10 +21,16 @@ class Expense extends Model
 
      */
 
-    protected $fillable = [
+    // protected $fillable = [
 
-        'name', 'detail'
+    //     'name', 'detail'
 
-    ];
+    // ];
+
+
+     public function customer()
+    {
+        return $this->belongsto('\App\User');
+    }
 
 }

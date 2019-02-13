@@ -5,7 +5,7 @@ namespace App;
 
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\User;
 
 class Order extends Model
 
@@ -21,10 +21,20 @@ class Order extends Model
 
      */
 
-    protected $fillable = [
+    // protected $fillable = [
 
-        'name', 'detail'
+    //     'name', 'detail'
 
-    ];
+    // ];
+
+       public function customer()
+    {
+        return $this->belongsto('\App\User');
+    }
+    
+    public function staff()
+    {
+    return $this->belongsTo('App\User');
+    }
 
 }

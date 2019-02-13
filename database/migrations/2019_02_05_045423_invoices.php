@@ -16,10 +16,14 @@ class Invoices extends Migration
         Schema::create('invoices', function (Blueprint $table) {
 
             $table->increments('id');
-			$table->string('name');
-			$table->string('detail');
+            $table->integer('customer_id');
+            $table->integer('serial_no');
+            $table->integer('invoice_no');
+            $table->date('issue_date');
+            $table->string('due_note');
+            $table->date('due_date');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
-
         });
     }
 

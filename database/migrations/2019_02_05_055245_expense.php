@@ -14,11 +14,16 @@ class Expense extends Migration
     public function up()
     {
          Schema::create('expenses', function (Blueprint $table) {
-
             $table->increments('id');
-			$table->string('name');
+            $table->string('title');
+            $table->double('amount');            
+            $table->date('expense_date');
+            $table->string('category');
+            $table->integer('customer_id');
+            $table->string('account');
+            $table->string('description');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
-
         });
     }
 
